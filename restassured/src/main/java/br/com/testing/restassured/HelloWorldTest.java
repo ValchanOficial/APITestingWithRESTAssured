@@ -3,8 +3,24 @@ package br.com.testing.restassured;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.endsWith;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.isA;
+import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.startsWith;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +39,7 @@ public class HelloWorldTest {
 	public void TestHelloWorld() {
     	Response response = RestAssured.request(Method.GET, "http://restapi.wcaquino.me/ola");
     	assertTrue(response.getBody().asString().equals("Ola Mundo!"));
-    	assertTrue("O status code deve ser 200",response.statusCode()==200);//forma 1
+    	assertTrue(response.statusCode()==200);//forma 1
     	assertEquals(200, response.statusCode());//forma 2
     	assertTrue(response.statusCode()==200);//forma 3
     	ValidatableResponse validacao = response.then();
